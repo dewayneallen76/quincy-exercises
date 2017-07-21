@@ -29,4 +29,10 @@ foreach($books as $key => $book) {
   }
 }
 
+foreach($books as $key => $book) {
+  if($book['published'] >= 1950) {
+    echo $key . PHP_EOL;
+  }
+}
+
  ?>
