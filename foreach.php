@@ -27,8 +27,9 @@ foreach($books as $key => $book) {
   foreach($book as $key => $value) {
     echo $key . " " . $value .PHP_EOL;
   }
+  echo "-----------------------" . PHP_EOL;
 }
-
+echo "Books published after 1950:" . PHP_EOL;
 foreach($books as $key => $book) {
   if($book['published'] >= 1950) {
     echo $key . PHP_EOL;
