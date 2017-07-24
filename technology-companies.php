@@ -53,10 +53,12 @@ ksort($companies);
 print_r($companies) . PHP_EOL;
 
 // Sort the people in each company alphabetically. You will need to use a foreach loop and will need to reassign each inner array after sorting. Output the result.
-foreach ($companies as $company) {
-  $companies = asort($company);
-  print_r($company) . PHP_EOL;
+foreach ($companies as $key => $company) {
+  asort($company);
+  $sortedArray = $company;
+  $companies[$key] = $sortedArray;
 }
+print_r($companies) . PHP_EOL;
 
 // Sort the companies from "biggest" to "smallest". This may be easier than you think, but be sure you don't loose the company names!
 arsort($companies);
