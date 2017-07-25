@@ -12,8 +12,6 @@
 
  // TODO: Convert the string into an array
  $physicistsArray = explode(',', $physicistsString);
- print_r($physicistsArray);
-
 
  // Humanize that list
  $famousFakePhysicists = humanizedList($physicistsArray);
