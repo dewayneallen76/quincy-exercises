@@ -21,7 +21,6 @@ function parseContacts($filename)
       $associativeArray['phone'] = "$areacode-$prefix-$number";
 
       array_push($contacts, $associativeArray);
-      array_shift($contacts);
     }
 
     fclose($handle);
