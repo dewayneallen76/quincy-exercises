@@ -15,11 +15,10 @@ function isNegative($input)
 
 function average($array)
 {
-  $total = 0;
-  for($i = 0; $i < count($array); $i++) {
-    $total += $array[$i];
+  if(!is_array($array)) {
+    return false;
   }
-  return $total / count($array);
+  return array_sum($array) / count($array);
 }
 
 // Write a function named countOdds that accepts an array of numbers and returns the number of odd numbers in the array.
@@ -27,8 +26,8 @@ function average($array)
 function countOdds($array)
 {
   $total = 0;
-  for($i = 0; $i < count($array); $i++) {
-    if($array[$i] % 2 !== 0) {
+  foreach($array as $input) {
+    if($input % 2 !== 0) {
       $total++;
     }
   }
@@ -39,6 +38,9 @@ function countOdds($array)
 
 function convertNameToAssociativeArray($string)
 {
+  if(!is_string($string)) {
+    return false;
+  }
   $nameArray = explode(' ', $string);
   $associativeArray = [];
   $associativeArray['firstName'] = $nameArray[0];
@@ -50,13 +52,41 @@ function convertNameToAssociativeArray($string)
 
 function fiveTo($input)
 {
-  $array = [];
-  if($input > 5) {
-    for($count = 5; $count < $input; $count++){
-      array_push($array, $count);
-    }
-    return $array;
-  } else {
-    return $array = [5];
+  if(!is_numeric($input)) {
+    return false;
   }
+
+  $array = [];
+  if($input >= 5) {
+    for($i = 5; $i <= $input; $i++){
+      $array[] = $i;
+    }
+  }
+  if($input <5) {
+    for($i = 5; $i >= $input; $i--){
+      $array[] = $i;
+    }
+  }
+  return $array;
+}
+
+// Write a function named upperCaseLastNames that accepts an array of associative arrays where each associative array has indices firstName and lastName and returns the same array of associative arrays with each last name capitalized
+
+$names = [
+     ['firstName' => 'Harry', 'lastName' => 'Potter'],
+     ['firstName' => 'Ron', 'lastName' => 'weasley'],
+     ['firstName' => 'Hermione', 'lastName' => 'granger'],
+ ];
+
+function upperCaseLastNames($array)
+{
+  if(!is_array($array)) {
+    return false;
+  }
+
+  foreach($array as $key => $name) {
+    $name['lastName'] = ucfirst($name['lastName']);
+    $array[$key] = $name;
+  }
+  return $array;
 }
