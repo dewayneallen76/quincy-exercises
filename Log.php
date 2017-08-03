@@ -6,7 +6,7 @@ class Log
 
   public function logMessage($level, $message)
   {
-    $this->filename = date('Y-m-d');
+    $this->filename = 'log-' . date('Y-m-d') .'.log';
     $handle = fopen($this->filename, 'a');
     $stringToWrite = date("Y-m-d H:i:s") . " [" . $level . "]" .$message . PHP_EOL;
     fwrite($handle, $stringToWrite);
