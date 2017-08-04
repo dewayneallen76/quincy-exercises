@@ -14,10 +14,8 @@ class Log
 
   public function logMessage($level, $message)
   {
-
     $stringToWrite = date("Y-m-d H:i:s") . " [" . $level . "]" .$message . PHP_EOL;
     fwrite($this->handle, $stringToWrite);
-
   }
 
   public function info($message)
