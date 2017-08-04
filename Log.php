@@ -11,10 +11,6 @@ class Log
     $this->handle = fopen($this->filename, 'a');
   }
 
-  public function __destruct()
-  {
-    fclose($this->handle);
-  }
 
   public function logMessage($level, $message)
   {
@@ -34,6 +30,10 @@ class Log
     $this->logMessage("ERROR", $message);
   }
 
+  public function __destruct()
+  {
+    fclose($this->handle);
+  }
 }
 
  ?>
