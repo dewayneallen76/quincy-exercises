@@ -3,9 +3,9 @@
 require_once 'Log.php';
 
 
-$log = new Log();
+$log = new Log('cli');
 
-$log->info("Testing log class");
+$log->info("testing constructor");
 $log->error("This is an error.");
 
  ?>

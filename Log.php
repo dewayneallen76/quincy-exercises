@@ -3,15 +3,24 @@
 class Log
 {
   public $filename;
+  public $handle;
+
+  public function __construct($prefix = 'log')
+  {
+    $this->filename = $prefix . date('Y-m-d') .'.log';
+    $this->handle = fopen($this->filename, 'a');
+  }
+
+  public function __destruct()
+  {
+    fclose($this->handle);
+  }
 
   public function logMessage($level, $message)
   {
-    $this->filename = 'log-' . date('Y-m-d') .'.log';
-    $handle = fopen($this->filename, 'a');
-    $stringToWrite = date("Y-m-d H:i:s") . " [" . $level . "]" .$message . PHP_EOL;
-    fwrite($handle, $stringToWrite);
 
-    fclose($handle);
+    $stringToWrite = date("Y-m-d H:i:s") . " [" . $level . "]" .$message . PHP_EOL;
+    fwrite($this->handle, $stringToWrite);
 
   }
 
