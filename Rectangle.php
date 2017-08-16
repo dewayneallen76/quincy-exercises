@@ -14,7 +14,12 @@ class Rectangle
 
   public function area()
   {
-    return $this->height * $this->width . PHP_EOL;
+    return $this->height * $this->width;
+  }
+
+  public function perimeter()
+  {
+    return ($this->height + $this->width) * 2;
   }
 }
  ?>
