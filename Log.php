@@ -13,7 +13,7 @@ class Log
   public function __construct($prefix = 'log')
   {
     $this->setFilename($prefix);
-    $this->handle = fopen($this->filename, 'a');
+    $this->setHandle($prefix);
   }
 
   public function setFilename($prefix)
@@ -30,6 +30,9 @@ class Log
     }
   }
 
+  public function setHandle($prefix) {
+    $this->handle = fopen($this->filename, 'a');
+  }
 
 
   public function logMessage($level, $message)
