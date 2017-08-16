@@ -2,9 +2,9 @@
 
 class Log
 {
-  public $filename;
+  private $filename;
   // Add a new property to the class called $handle.
-  public $handle;
+  private $handle;
 
   // Add a constructor to your Log class. Your constructor should:
   // Take in a parameter called $prefix. If nothing is passed to the constructor, the $prefix should default to 'log'.
@@ -12,9 +12,24 @@ class Log
   // Open the $filename for appending and assign the file pointer to the property $handle.
   public function __construct($prefix = 'log')
   {
-    $this->filename = $prefix . "-" . date('Y-m-d') .'.log';
+    $this->setFilename($prefix);
     $this->handle = fopen($this->filename, 'a');
   }
+
+  public function setFilename($prefix)
+  {
+    $this->filename = $prefix . "-" . date('Y-m-d') .'.log';
+
+    if (!touch($this->filename)) {  // We can't write to this file
+      echo 'File is not readable', PHP_EOL;
+      exit;
+    }
+    if (!is_writable($this->filename)) {
+      echo 'File is not writable', PHP_EOL;
+      exit;
+    }
+  }
+
 
 
   public function logMessage($level, $message)
