@@ -3,10 +3,12 @@
 require_once 'Rectangle.php';
 require_once 'Square.php';
 
-$test = new Rectangle(5,4);
-$test2 = new Square(5,4);
+$square = new Square(4);
+echo $square->perimeter() . PHP_EOL;
+echo $square->area() . PHP_EOL;
 
-echo "The area is " . $test->area();
-echo "The perimeter is " . $test2->perimeter();
+$rectangle = new Rectangle(9, 4);
+echo $rectangle->perimeter() . PHP_EOL;
+echo $rectangle->area() . PHP_EOL;
 
  ?>
