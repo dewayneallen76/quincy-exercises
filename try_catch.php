@@ -3,11 +3,11 @@
 function sayBob($bob = "", $ross)
 {
     if ($bob === "") {
-        throw new Exception("Input cannot be empty.", 45);
+        throw new InvalidArgumentException("Input cannot be empty.", 45);
     } else if (!is_string($bob)) {
-        throw new Exception("Input must be a string!");
+        throw new InvalidArgumentException("Input must be a string!");
     } else if (!ctype_alpha($bob)) {
-        throw new Exception("Must use only letters.");
+        throw new InvalidArgumentException("Must use only letters.");
     } else if (strtolower($bob) !== "bob") {
         throw new Exception("Name must match Bob");
     } else {
@@ -51,6 +51,8 @@ try {
   sayBob(12345, "Ross");
 } catch (InvalidArgumentException $e) {
   echo $e->getMessage() . " in " . $e->getFile();
+} catch (ArgumentCountError $e) {
+  echo $e->getMessage();
 } catch (Exception $e) {
   echo $e->getMessage();
 }
