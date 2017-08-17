@@ -49,6 +49,8 @@ echo PHP_EOL;
 // Write the try/catch block here
 try {
   sayBob(12345, "Ross");
+} catch (InvalidArgumentException $e) {
+  echo $e->getMessage() . " in " . $e->getFile();
 } catch (Exception $e) {
   echo $e->getMessage();
 }
